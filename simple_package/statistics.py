@@ -20,3 +20,31 @@
 ##
 ## 5. Also, do something and/or throw an exception/message if the
 ##    numpy and matplotlib packages are not installed.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+user_input = input("Enter your data in a list format i.e [point1, point2, ...]")
+user_list = list(map(int, user_input.split(',')))
+
+data = np.array(user_list)
+
+
+mean = np.mean(data)
+standard_deviation = np.std(data)
+median = np.median(data)
+
+
+
+print("mean:", mean, 
+      "standard deviation:", standard_deviation, 
+      "median:", median)
+
+from graphics import hist_plots
+hist_plots(data, mean, median)
+
+try:
+    import numpy
+    import matplotlib
+except ImportError as e:
+    raise ImportError(f"Required package is missing: {e.name}. Please install it using 'pip install {e.name}'")
